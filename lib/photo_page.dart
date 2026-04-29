@@ -12,6 +12,15 @@ class PhotoPage extends StatefulWidget {
 }
 
 class _PhotoPageState extends State<PhotoPage> {
+  final List<String> _localPhotos = [
+    'asset/photo1.jpg',
+    'asset/photo2.jpg',
+    'asset/photo3.jpg',
+    'asset/photo4.jpg',
+    'asset/photo5.jpg',
+    'asset/photo6.jpg',
+  ];
+
   String? _imageUrl;
   bool _isLoading = false;
   String? _errorMessage;
@@ -23,6 +32,15 @@ class _PhotoPageState extends State<PhotoPage> {
       _errorMessage = null;
       _imageUrl = null;
     });
+    try {
+      await Future.delayed(const Duration(seconds: 2));
+
+      final randomIndex =
+          DateTime.now().millisecondsSinceEpoch % _localPhotos.length;
+      _imageUrl = _localPhotos[randomIndex];
+    } catch (e) {
+      _errorMessage = 'Ошибка загрузки фото';
+    }
     try {
       String url;
       http.Response response;
@@ -126,7 +144,7 @@ class _PhotoPageState extends State<PhotoPage> {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
-            child: Image.network(
+            child: Image.asset(
               _imageUrl!,
               fit: BoxFit.cover,
               width: double.infinity,
