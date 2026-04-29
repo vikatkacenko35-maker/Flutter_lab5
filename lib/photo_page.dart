@@ -13,12 +13,12 @@ class PhotoPage extends StatefulWidget {
 
 class _PhotoPageState extends State<PhotoPage> {
   final List<String> _localPhotos = [
-    'asset/photo1.jpg',
-    'asset/photo2.jpg',
-    'asset/photo3.jpg',
-    'asset/photo4.jpg',
-    'asset/photo5.jpg',
-    'asset/photo6.jpg',
+    'assets/photo1.jpg',
+    'assets/photo2.jpg',
+    'assets/photo3.jpg',
+    'assets/photo4.jpg',
+    'assets/photo5.jpg',
+    'assets/photo6.jpg',
   ];
 
   String? _imageUrl;
